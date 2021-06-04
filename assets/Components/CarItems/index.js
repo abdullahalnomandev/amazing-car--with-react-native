@@ -3,33 +3,45 @@ import { ImageBackground, Text, View } from 'react-native';
 import StyledButton from '../styleButton';
 import styles from './style';
 
-const CarItem = () => {
+const CarItem = (props) => {
+
+    const { name, tagline, image, taglineCTA } = props;
     return (
         <View style={styles.carContainer}>
             <ImageBackground
-                source={require('../../images/ModelX.jpeg')}
+                source={image}
                 style={styles.image} />
 
             <View style={styles.titles}>
-                <Text style={styles.title}> Model S</Text>
-                <Text style={styles.subtitle}> Starting at $69,420</Text>
+                <Text style={styles.title}> {name}</Text>
+                <Text style={styles.subtitle}>
+                    {tagline}&nbsp;
+                    <Text style={styles.subtitleCTA}>
+
+                        {taglineCTA}
+                    </Text>
+                </Text>
             </View>
 
-            <StyledButton
-                type="primary"
-                content={"Custom Order"}
-                onPress={() =>
-                    console.warn('Custom Order was presed')
-                }
-            />
+            <View style={styles.buttonContainer}>
+                <StyledButton
+                    type="primary"
+                    content={"Custom Order"}
+                    onPress={() =>
+                        console.warn('Custom Order was presed')
+                    }
+                />
 
-            <StyledButton
-                type="secondary"
-                content={"Existing Inventory"}
-                onPress={() =>
-                    console.warn('Existing Inventory was presed')
-                }
-            />
+                <StyledButton
+                    type="secondary"
+                    content={"Existing Inventory"}
+                    onPress={() =>
+                        console.warn('Existing Inventory was presed')
+                    }
+                />
+
+            </View>
+
 
 
         </View>
